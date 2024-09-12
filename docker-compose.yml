@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: patients_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+  telegram-bot:
+    build: .
+    volumes:
+      - /Users/levstremilov/Downloads/bot_rent_119:/app
+    depends_on:
+      - db

@@ -1,20 +1,31 @@
 version: '3.8'
 
 services:
-  db:
+  db_patients:
     image: postgres
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: patients_db
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     ports:
       - "5432:5432"
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
+    networks:
+      - network
 
-  telegram-bot:
+  patients-bot:
     build: .
     volumes:
-      - /Users/levstremilov/Downloads/bot_rent_119:/app
+      - .:/app
     depends_on:
-      - db
+      - db_patients
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  postgres-data:

@@ -16,9 +16,7 @@ class PatientRepository:
 
     def get_today_patients(self):
         today = datetime.utcnow().date()
-        return self.db.query(Patient).filter(
-            Patient.added_on >= today
-        ).all()
+        return self.db.query(Patient).filter(Patient.added_on >= today).all()
 
     def get_patients_count_by_day(self):
         today = datetime.now()
@@ -26,10 +24,7 @@ class PatientRepository:
         end_of_week = start_of_week + timedelta(days=6)
 
         counts = (
-            self.db.query(
-                func.date(Patient.added_on),
-                func.count(Patient.id)
-            )
+            self.db.query(func.date(Patient.added_on), func.count(Patient.id))
             .filter(Patient.added_on >= start_of_week, Patient.added_on <= end_of_week)
             .group_by(func.date(Patient.added_on))
             .all()

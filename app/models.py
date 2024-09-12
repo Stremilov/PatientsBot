@@ -6,7 +6,7 @@ Base = declarative_base()
 
 
 class Patient(Base):
-    __tablename__ = 'patients'
+    __tablename__ = "patients"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)

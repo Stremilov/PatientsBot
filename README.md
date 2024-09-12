@@ -10,22 +10,23 @@
 
 2. **Клонируйте репозиторий:**
    
-   `git clone https://github.com/username/repo-name.git`
-   `cd repo-name`
+   `git clone https://github.com/Stremilov/PatientsBot`
+   `cd PatientsBot`
    
 3. **Настройте переменные окружения:**
    Создайте файл .env в корневой директории проекта и добавьте следующие строки:
    
    `BOT_TOKEN=your_bot_token_here`
+   `DB_HOST="your_db_host"`
    `DB_USER="your_db_user"`
    `DB_PASSWORD="your_db_password"`
    `DB_NAME="your_db_name"`
    
-4. **Запустите проект:**
+5. **Запустите проект:**
    
    `docker-compose up -d --build`
    
-5. **Остановите проект:**
+6. **Остановите проект:**
    Чтобы остановить работающие контейнеры, используйте:
    
    `docker-compose down`
@@ -40,12 +41,12 @@
    
 2. Запустите бота:
    
-   `python bot.py`
+   `python main.py`
 
 
 ## ⚙️ Технологии
 
 - **Язык программирования**: Python
 - **Библиотека для Telegram**: [Aiogram](https://docs.aiogram.dev/)
-- **База данных**: PostgreSQL
+- **База данных**: PostgreSQL + Sqlalchemy
 
